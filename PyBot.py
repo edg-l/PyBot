@@ -13,7 +13,7 @@ Made by:
 Ryozuki: https://github.com/Ryozuki/
 timakro: https://github.com/timakro
 Thanks for helping:
-Wolf
+Wolf: https://github.com/abck
 Commands: !help, !calc <operation>, !time, !dice
 
 TODO:
