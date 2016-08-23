@@ -13,7 +13,6 @@ Commands: !help, !calc <operation>, !time, !dice
 
 TODO:
 - More commands
-- Json config
 '''
 
 version = 1.0
