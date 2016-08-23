@@ -11,9 +11,9 @@ Name: PyBot
 Version: 1.0
 Made by:
 - Ryozuki: https://github.com/Ryozuki/
-- timakro: https://github.com/timakro
 Thanks for helping:
 - Wolf: https://github.com/abck
+- timakro: https://github.com/timakro
 Commands: !help, !calc <operation>, !time, !dice
 
 TODO:
