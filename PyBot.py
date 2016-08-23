@@ -14,6 +14,7 @@ Commands: !help, !calc <operation>, !time, !dice
 
 TODO:
 - More commands
+- Json config
 '''
 
 version = 1.0
@@ -23,22 +24,13 @@ wait_time = 3
 logfilename = '../autoexec_server.log'
 fifofilename = '../ddnet.fifo'
 
-aeval = Interpreter()
+aeval = Interpreter(max_time=0.1)
 
 def send(msg):
     with open(fifofilename, 'w') as fifofile:
         fifofile.write(msg + "\n")
     time.sleep(wait_time)
     logfile.seek(0,2)
-
-def getname(line):
-    test = line[line.find(":") + 1:len(line)]
-    test2 = test[test.find(":") + 1:len(line)]
-    test3 = test2[test2.find(":") + 1:len(line)]
-    test4 = test3[test3.find(":") + 1:len(line)]
-    test5 = test4[test4.find(":") + 1:len(line)]
-    name = test5[0:test5.rfind(":")]
-    return name
 
 def follow(logfile):
     send("say PyBot {} connected".format(version))
@@ -49,13 +41,18 @@ def follow(logfile):
             time.sleep(0.1) # Sleep briefly
             continue
 
-        # get the name of the command caller
-        name = getname(line)
-
         # get the command and it's args
         org_command = line[1 + line.find('!'):]
         arg_str = org_command.split(maxsplit=1)[-1]
         command = org_command.split()
+
+        # get the name of the command caller
+        try:
+            command_a = re.search(r"^\[\d\d-\d\d-\d\d \d\d:\d\d:\d\d\]\[chat\]: (?P<id>\d+):(?P<chat>(-|)\d+):(?P<PlayerName>.{,15}): (?P<command>.+)$", line)
+            name = command_a.group('PlayerName')
+            id_user = command_a.group('id')
+        except:
+            pass
 
         # listen for commands
         if line.find("[chat]"):
