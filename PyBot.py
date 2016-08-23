@@ -4,6 +4,7 @@ import re
 import math
 import time
 import random
+from asteval import Interpreter
 
 '''
 Name: PyBot
@@ -21,6 +22,8 @@ version = 1.0
 wait_time = 3
 logfilename = '../autoexec_server.log'
 fifofilename = '../ddnet.fifo'
+
+aeval = Interpreter()
 
 def send(msg):
     with open(fifofilename, 'w') as fifofile:
@@ -69,7 +72,7 @@ def follow(logfile):
                     send("say [{}] Rolled the dice and got: {}".format(name, number))
             if command[0] == "calc":
                 try:
-                    result = repr(eval(arg_str))
+                    result = repr(aeval(arg_str))
                 except:
                     result = traceback.format_exc().rsplit('\n', 2)[1]
                 # escape result
