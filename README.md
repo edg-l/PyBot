@@ -8,6 +8,8 @@ Commands: !help, !calc <operation>, !time, !dice
 
 ## Setup
 
+Clone this repo while being on ddnet dir.
+
 On your server config add:
 
 `sv_input_fifo ddnet.fifo`
