@@ -2,7 +2,7 @@
 
 Version: 1.0
 
-Made by: Ryozuki, timakro
+Made by: Ryozuki
 
 Commands: !help, !calc <operation>, !time, !dice
 
