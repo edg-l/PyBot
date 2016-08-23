@@ -21,9 +21,10 @@ version = 1.0
 # config:
 wait_time = 3
 logfilename = 'autoexec_server.log'
+fifofilename = 'ddnet.fifo'
 
 def send(msg):
-    with open('ddnet.fifo', 'w') as fifofile:
+    with open(fifofilename, 'w') as fifofile:
         fifofile.write(msg + "\n")
     time.sleep(wait_time)
     logfile.seek(0,2)
