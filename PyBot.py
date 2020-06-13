@@ -53,7 +53,7 @@ def follow(logfile):
             time.sleep(0.1)  # Sleep briefly
             continue
 
-        re_result = re.search(r"^\[\d\d-\d\d-\d\d \d\d:\d\d:\d\d\]\[chat\]: (?P<id>\d+):(?P<chat>(-|)\d+):(?P<PlayerName>.{,15}): (?P<command>.+)$", line)
+        re_result = re.search(r"^\[\d{4}-\d\d-\d\d \d\d:\d\d:\d\d\]\[chat\]: (?P<id>\d+):(?P<chat>(-|)\d+):(?P<PlayerName>.{,15}): (?P<command>.+)$", line)
         if re_result:
             name = re_result.group('PlayerName')
             id_user = re_result.group('id')
